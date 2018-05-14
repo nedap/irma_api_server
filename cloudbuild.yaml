@@ -4,3 +4,13 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '.']
 images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - set
+  - image
+  - deployment
+  - 'irma_api_server'
+  - container='gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=distributed-health-demo'
