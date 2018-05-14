@@ -14,5 +14,5 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # RUN mkdir /etc/irma_api_conf/irma_configuration
 # COPY ./d.h-k8s/irma-config.json /etc/irma_api_conf/config.json
 # COPY ./d.h-irma-demo-schememanager/ /etc/irma_api_conf/irma_configuration/nedap-irma-demo/
-COPY ./irma_api_server/build/libs/irma_api_server.war /usr/local/tomcat/webapps/
+COPY build/libs/irma_api_server.war /usr/local/tomcat/webapps/
 # RUN rm -rf /etc/irma_api_conf/irma_configuration/nedap-irma-demo/.git
